@@ -1,0 +1,36 @@
+<div class="dashboard-header">
+  <!-- <div class="dashboard-menu-button" (click)="openNav()" [ngClass]="open ? 'dashboard-menu-open' : ''">
+    <i class="fas fa-bars"></i>
+    <i class="fas fa-times"></i>
+  </div> -->
+  <div class="dashboard-header__logo logo">
+    <a routerLink="/">
+       WEBSITE NAME
+    </a>
+  </div>
+  <div class="dashboard-header__user-info">
+    <ng-container *ngIf="getUser(); else authUser">
+      <h3>Hey, {{user?.firstName}}</h3>
+      <span (click)="logout()" class="btn btn-primary">Logout
+        <!-- <i class="far fa-power-off icon-right"></i> -->
+      </span>
+    </ng-container>
+    <ng-template #authUser>
+      <span>Register</span>
+      <span>Login</span>
+    </ng-template>
+
+  </div>
+</div>
+
+<div class="dashboard" [ngClass]="open ? 'dashboard-menu-open' : ''">
+  <div class="dashboard__menu">
+    <app-dashboard-menu (hideMenu)="open = false;"></app-dashboard-menu>
+  </div>
+  <div class="dashboard__content">
+    <div class="content-data">
+      <router-outlet>
+      </router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+.dashboard-menu__list {
+  list-style-type: none;
+  &__item {
+    a {
+      padding: 10px;
+      text-decoration: none;
+      color: #000;
+      display: block;
+      box-sizing: border-box;
+      &:hover {
+        background: darken(#f9f9f9, 5%);
+      }
+      &.active {
+        background: darken(#f9f9f9, 15%);
+      }
+    }
+  }
+}

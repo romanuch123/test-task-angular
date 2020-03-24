@@ -1,0 +1,13 @@
+<nav>
+  <ul class="dashboard-menu__list">
+    <li *ngFor="let menuItem of menuList" (click)="hideMenu.emit()" class="dashboard-menu__list__item">
+      <a
+        routerLink="/{{menuItem.path}}"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact:true}"
+      >
+        <span><i [ngClass]="menuItem.icon"></i></span>{{ menuItem.name }}
+      </a>
+    </li>
+  </ul>
+</nav>
