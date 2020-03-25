@@ -23,7 +23,6 @@ export class UserService {
   // getUser(): CookieUser {
   //   return localStorage.getItem('user');
   // }
-  
   // getAllUsers(): CookieUser {
   //   return localStorage.getItem('user');
   // }
