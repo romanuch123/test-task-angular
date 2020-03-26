@@ -1,14 +1,12 @@
 import {
   Component,
   OnInit,
-  OnChanges,
   DoCheck,
   AfterContentInit,
   AfterContentChecked,
   AfterViewInit,
   AfterViewChecked,
   OnDestroy,
-  SimpleChanges,
 } from '@angular/core';
 import { of, from } from 'rxjs';
 import { switchMap, take } from 'rxjs/operators';
@@ -21,21 +19,20 @@ import { TestService } from '../core/services/test.service';
 })
 export class LifeCycleHooksComponent implements
 OnInit,
-OnChanges,
 DoCheck,
 AfterContentInit,
 AfterContentChecked,
 AfterViewInit,
 AfterViewChecked,
 OnDestroy {
-
+  testPropsName: string = 'A';
   constructor(
-    private _testService: TestService,
+    private testService: TestService,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     console.log('ngOnInit');
-    this._testService.getRecipe().pipe(
+    this.testService.getRecipe().pipe(
       switchMap((sourse) => {
         return from([sourse.location]);
       }),
@@ -54,15 +51,6 @@ OnDestroy {
     ).subscribe((data) => {
       console.log(data);
     });
-
-
-
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    // Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    // Add '${implements OnChanges}' to the class.
-    console.log(changes);
-    console.log('ngOnChanges');
   }
   ngDoCheck(): void {
     // Called every time that the input properties of a component or a directive are
@@ -96,7 +84,6 @@ OnDestroy {
 
   }
   ngOnDestroy() {
-    // this.renderer.removeClass(document.body, this.currentPage + '-dashboard');
     console.log('ngOnDestroy');
 
   }

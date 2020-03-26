@@ -1,0 +1,49 @@
+<div class="login-wrapper">
+  <form *ngIf="currentPage === 'login'" class="login-form" autocomplete="off" [formGroup]="loginDataForm">
+    <h1 class="title">
+      Login
+    </h1>
+    <div class="form-row">
+      <label for="login">Username</label>
+      <input type="text" name="username" id="username" class="form-field" placeholder="Username" formControlName="username">
+    </div>
+    <div class="form-row">
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" class="form-field" placeholder="Password" formControlName="password">
+    </div>
+
+    <a (click)="currentPage = 'registration'">create new account</a>
+        <button class="login100-form-btn">
+          Create
+        </button>
+  </form>
+  <form *ngIf="currentPage === 'registration'" class="registration-form" [formGroup]="registrationDataForm">
+    <h1 class="login100-form-title p-b-59">
+      Create new account
+    </h1>
+    <label for="first-name">
+      First Name
+      <input type="text" name="first-name" id="first-name" class="form-field" formControlName="firstName">
+    </label>
+    <label for="last-name">
+      Last Name
+      <input type="text" name="last-name" id="last-name" class="form-field" formControlName="lastName">
+    </label>
+    <label for="username">
+      Username
+      <input type="text" name="username" id="username" class="form-field" formControlName="username">
+    </label>
+    <label for="password">
+      Password
+      <input type="password" name="password" id="password" class="form-field" formControlName="password">
+    </label>
+    <label for="repeated-password">
+      Repeat Password
+      <input type="password" name="repeated-password" id="repeated-password" class="form-field" formControlName="repeatedPassword">
+    </label>
+    <a (click)="currentPage = 'login'">back to login</a>
+        <button class="login100-form-btn">
+          Create
+        </button>
+  </form>
+</div>

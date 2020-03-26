@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { UserModule } from './modules/user/user.module';
 import { LifeCycleHooksComponent } from './life-cycle-hooks/life-cycle-hooks.component';
+import { LifeCycleChangesComponent } from './life-cycle-hooks/life-cycle-changes/life-cycle-changes.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LifeCycleHooksComponent,
+    LifeCycleChangesComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -14,10 +15,10 @@ const httpOptions = {
 export class TestService {
   url: string = 'http://api.weatherstack.com/current?access_key=5d1944e67e74ede03d686ac6c8955570&query=Lviv';
   constructor(
-    private _http: HttpClient,
+    private http: HttpClient,
   ) { }
 
-  getRecipe() {
-    return this._http.get(this.url);
+  getRecipe(): Observable<any> {
+    return this.http.get(this.url);
   }
 }
