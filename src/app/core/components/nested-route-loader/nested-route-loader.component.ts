@@ -14,16 +14,16 @@ export class NestedRouteLoaderComponent implements OnInit {
   isLoading = true;
   user;
   constructor(
-    private _router: Router,
-    private _userService: UserService,
+    private router: Router,
+    private userService: UserService,
   ) { }
   ngOnInit() {
-    this.user = this._userService.getUser();
+    this.user = this.userService.getUser();
     // this.renderer.addClass(document.body, this.currentPage + '-dashboard');
 
   }
   getUser() {
-    this.user = this._userService.getUser();
+    this.user = this.userService.getUser();
     return this.user;
   }
   openNav() {
@@ -31,7 +31,7 @@ export class NestedRouteLoaderComponent implements OnInit {
   }
 
   logout() {
-    this._userService.deleteUser();
-    this._router.navigate(['/']);
+    this.userService.deleteUser();
+    this.router.navigate(['/']);
   }
 }

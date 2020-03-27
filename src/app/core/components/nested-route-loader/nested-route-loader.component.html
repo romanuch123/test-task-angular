@@ -5,19 +5,19 @@
   </div> -->
   <div class="dashboard-header__logo logo">
     <a routerLink="/">
-       WEBSITE NAME
+       LOGO
     </a>
   </div>
   <div class="dashboard-header__user-info">
     <ng-container *ngIf="getUser(); else authUser">
-      <h3>Hey, {{user?.firstName}}</h3>
-      <span (click)="logout()" class="btn btn-primary">Logout
+      <span class="greeting">Hey, {{user?.firstName}}</span>
+      <span (click)="logout()" class="sign-control">Logout
         <!-- <i class="far fa-power-off icon-right"></i> -->
       </span>
     </ng-container>
     <ng-template #authUser>
       <span>
-        <a routerLink="/login">
+        <a routerLink="/login" class="sign-control">
           Login
        </a>
       </span>

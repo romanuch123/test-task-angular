@@ -1,4 +1,10 @@
 .dashboard-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  box-sizing: border-box;
   min-height: 64px;
   background: #244632;
   display: flex;
@@ -17,7 +23,19 @@
   }
   &__user-info {
     color: #fff;
-    
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+    .sign-control {
+      border: 1px solid #fff;
+      border-radius: 7px;
+      padding: 5px 20px;
+      margin-left: 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
 .dashboard {
@@ -30,6 +48,6 @@
     min-height: 100vh;
   }
   &__content {
-    padding-left: 200px;
+    padding: 64px 0 0 200px;
   }
 }
