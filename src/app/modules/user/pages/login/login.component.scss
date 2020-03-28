@@ -2,35 +2,12 @@ label {
   display: block;
   padding: 5px 0;
 }
-.form-field {
-  width: 100%;
-  border: 2px solid #cccccc;
-  border-radius: 7px;
-  line-height: 2.5;
-  padding-left: 15px;
-  // border-bottom: 1px solid grey;
-  &:focus {
-    outline: none;
-  }
-  &.ng-touched.ng-invalid {
-    border-color: red;
-    & ~  .validate-msg {
-      display: inline !important;
-    }
-  }
-  // &.ng-touched.ng-valid {
-  //   border-color: green;
-  // }
-}
+
 
 .login-form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  h1 {
-    font-size: 20px;
-    margin: 20px;
-  }
   .form-row {
     width: 50%;
     margin: 10px;
@@ -45,7 +22,6 @@ label {
     .login-btn {
       margin: 0 auto;
       display: block;
-      border: none;
       background: #244632;
       color: #fff;
       width: 150px;
@@ -53,10 +29,6 @@ label {
       border-radius: 7px;
       &:hover {
         background: darken(#244632, 10%);
-        cursor: pointer;
-      }
-      &:focus {
-        outline: none;
       }
     }
     a {
@@ -69,4 +41,7 @@ label {
       text-align: center;
     }
   }
+}
+.exist-user-msg {
+  color: red;
 }

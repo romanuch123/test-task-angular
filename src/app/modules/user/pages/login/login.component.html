@@ -4,9 +4,9 @@
       Login
     </h1>
     <div class="form-row">
-      <label for="login">Username</label>
-      <input type="text" name="username" id="username" class="form-field" placeholder="Username" formControlName="username">
-      <span class="validate-msg">The Username is required.</span>
+      <label for="login">E-mail</label>
+      <input type="email" name="email" id="email" class="form-field" placeholder="E-mail" formControlName="email">
+      <span class="validate-msg">The E-mail is required.</span>
     </div>
     <div class="form-row">
       <label for="password">Password</label>
@@ -35,9 +35,9 @@
       <span class="validate-msg">The Last Name is required.</span>
     </div>
     <div class="form-row">
-      <label for="username">Username</label>
-      <input type="text" name="username" id="username" class="form-field" placeholder="Username" formControlName="username">
-      <span class="validate-msg">The Username is required.</span>
+      <label for="username">E-mail</label>
+      <input type="email" name="email" id="email" class="form-field" placeholder="E-mail" formControlName="email">
+      <span class="validate-msg">The E-mail is required.</span>
     </div>
     <div class="form-row">
       <label for="password">Password</label>
@@ -51,6 +51,7 @@
     </div>
     <div class="form-row">
       <button class="login-btn" (click)="registration()">Create</button>
+      <span *ngIf="isUserExist" class="exist-user-msg">User with email {{ emailOfExistUser }} is exist.</span>
     </div>
     <div class="form-row">
       <a (click)="currentPage = 'login'">back to login</a>

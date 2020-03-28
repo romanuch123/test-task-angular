@@ -1,3 +1,5 @@
+@import './assets/fonts/fonts.css';
+
 /* You can add global styles to this file, and also import other style files */
 // Hide reset to styles work
 /* RESET */
@@ -58,4 +60,53 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+// End reset
+
+body { 
+  font-family: "San Francisco";
+}
+
+h1 {
+  font-size: 20px;
+  margin: 20px;
+  text-align: center;
+}
+h2 {
+  font-size: 17px;
+  margin: 20px;
+  text-align: center;
+}
+.empty {
+  text-align: center;
+}
+
+.form-field {
+  width: 100%;
+  border: 2px solid #cccccc;
+  border-radius: 7px;
+  line-height: 2.5;
+  padding-left: 15px;
+  &:focus {
+    outline: none;
+  }
+  &.ng-touched.ng-invalid {
+    border-color: red;
+    & ~  .validate-msg {
+      display: inline !important;
+    }
+  }
+}
+
+button {
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+  &:focus {
+    outline: none;
+  }
+  &:disabled {
+    cursor: not-allowed;
+  }
 }

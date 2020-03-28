@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
+import { IMenuItem } from '../../interfaces/menuItem';
 
 @Component({
   selector: 'app-dashboard-menu',
@@ -9,13 +10,27 @@ import { Router } from '@angular/router';
 export class DashboardMenuComponent implements OnInit {
   @Output() hideMenu = new EventEmitter();
 
-  menuList: any[] = [
+  menuList: IMenuItem[] = [
     {
+      id: '1',
       name: 'Home',
       icon: 'fas fa-users-class',
       path: '',
     },
     {
+      id: '2',
+      name: 'Tasks',
+      icon: '',
+      path: 'tasks',
+    },
+    {
+      id: '3',
+      name: 'Completed tasks',
+      icon: '',
+      path: 'completed-tasks',
+    },
+    {
+      id: '4',
       name: 'Life Cycle Hooks',
       icon: 'fas fa-users-class',
       path: 'life-cycle-hooks',
@@ -23,7 +38,7 @@ export class DashboardMenuComponent implements OnInit {
   ];
 
   constructor(
-    private _router: Router,
+    private router: Router,
   ) { }
 
   ngOnInit() {

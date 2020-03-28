@@ -9,7 +9,7 @@
     </a>
   </div>
   <div class="dashboard-header__user-info">
-    <ng-container *ngIf="getUser(); else authUser">
+    <ng-container *ngIf="isUserAuthorized(); else authUser">
       <span class="greeting">Hey, {{user?.firstName}}</span>
       <span (click)="logout()" class="sign-control">Logout
         <!-- <i class="far fa-power-off icon-right"></i> -->

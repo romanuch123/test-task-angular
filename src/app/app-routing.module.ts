@@ -4,6 +4,8 @@ import { NestedRouteLoaderComponent } from './core/components/nested-route-loade
 import { LifeCycleHooksComponent } from './life-cycle-hooks/life-cycle-hooks.component';
 import { UserDashboardComponent } from './modules/user/pages/user-dashboard/user-dashboard.component';
 import { LoginComponent } from './modules/user/pages/login/login.component';
+import { TasksComponent } from './modules/user/pages/tasks/tasks.component';
+import { CompletedTasksComponent } from './modules/user/pages/completed-tasks/completed-tasks.component';
 
 const routes: Routes = [
   {
@@ -13,6 +15,14 @@ const routes: Routes = [
       {
         path: '',
         component: UserDashboardComponent,
+      },
+      {
+        path: 'tasks',
+        component: TasksComponent,
+      },
+      {
+        path: 'completed-tasks',
+        component: CompletedTasksComponent,
       },
       {
         path: 'life-cycle-hooks',

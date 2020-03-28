@@ -1,0 +1,11 @@
+<div class="task-wrapper">
+  <h1>Add new task</h1>
+  <div class="add-new-task">
+    <input type="text" class="form-field" placeholder="Add new task" [(ngModel)]="newTaskTitle">
+    <button (click)="addNewTask()" class="add-new-task__btn" [disabled]="newTaskTitle.trim() === ''"><i class="material-icons">add</i></button>
+  </div>
+  <div class="task-list-wrapper">
+    <h2>Task list</h2>
+    <app-tasks-list [tasksList]="filtredTaskList" (onUpdateTask)="updateTask($event)"></app-tasks-list>
+  </div>
+</div>

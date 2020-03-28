@@ -1,29 +1,40 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
+import { IUser } from '../../interfaces/user';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-nested-route-loader',
   templateUrl: './nested-route-loader.component.html',
   styleUrls: ['./nested-route-loader.component.scss']
 })
-export class NestedRouteLoaderComponent implements OnInit {
+export class NestedRouteLoaderComponent implements OnInit, DoCheck {
   open: boolean = false;
   currentPage = '';
   isLoaded = false;
   isLoading = true;
-  user;
+  user: IUser;
+
   constructor(
     private router: Router,
     private userService: UserService,
+    private authService: AuthService,
   ) { }
   ngOnInit() {
-    this.user = this.userService.getUser();
-    // this.renderer.addClass(document.body, this.currentPage + '-dashboard');
 
+    // this.renderer.addClass(document.body, this.currentPage + '-dashboard');
   }
-  getUser() {
-    this.user = this.userService.getUser();
+  ngDoCheck(): void {
+    // console.log('DoCheck');
+    // this.userService.getUser().subscribe((data) => {
+    //   this.user = data;
+    // });
+  }
+  isUserAuthorized(): IUser {
+    this.userService.getUser().subscribe((data) => {
+      this.user = data;
+    });
     return this.user;
   }
   openNav() {
@@ -31,7 +42,7 @@ export class NestedRouteLoaderComponent implements OnInit {
   }
 
   logout() {
-    this.userService.deleteUser();
+    this.authService.logout();
     this.router.navigate(['/']);
   }
 }

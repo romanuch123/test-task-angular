@@ -1,0 +1,16 @@
+<li class="task-item">
+  <div *ngIf="!isEdit" class="task-item__info">
+    <input type="checkbox" name="is-tasck-complete" [(ngModel)]="isComplete" (mouseup)="updateTask()">
+    <span class="task-item__title">{{ tasksItem.title }}</span>
+  </div>
+  <input *ngIf="isEdit" type="text" class="form-field" placeholder="Task title" [(ngModel)]="newTaskTitle">
+  <div *ngIf="!isEdit" class="task-item__controls">
+    <button ><i class="material-icons">reply</i></button>
+    <button (click)="isEdit = true"><i class="material-icons">edit</i></button>
+    <button (click)="deleteTask(tasksItem.id)"><i class="material-icons">delete</i></button>
+  </div>
+  <div *ngIf="isEdit" class="task-item__controls">
+    <button (click)="updateTask()" [disabled]="newTaskTitle.trim() === ''"><i class="material-icons">check</i></button>
+    <button (click)="closeEditing()"><i class="material-icons">close</i></button>
+  </div>
+</li>

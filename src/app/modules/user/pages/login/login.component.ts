@@ -16,6 +16,8 @@ export class LoginComponent implements OnInit {
   currentPage: string = 'login';
   loginDataForm: FormGroup;
   registrationDataForm: FormGroup;
+  isUserExist: boolean = false;
+  emailOfExistUser: string = '';
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -25,13 +27,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.loginDataForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required],
     });
     this.registrationDataForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
     },                                        {
@@ -40,8 +42,8 @@ export class LoginComponent implements OnInit {
   }
   login(): void {
     if (this.loginDataForm.valid) {
-      const { username, password } = this.loginDataForm.value;
-      this.authService.login(username, password);
+      const { email, password } = this.loginDataForm.value;
+      this.authService.login(email, password);
       this.router.navigate(['/']);
     } else {
       for (const prop in this.loginDataForm.controls) {
@@ -58,13 +60,18 @@ export class LoginComponent implements OnInit {
         id,
         firstName: this.registrationDataForm.value.firstName,
         lastName: this.registrationDataForm.value.lastName,
-        username: this.registrationDataForm.value.username,
+        email: this.registrationDataForm.value.email,
         password: this.registrationDataForm.value.password,
         tasks: [],
       };
-      this.userService.createUser(user);
-      this.authService.login(user.username, user.password);
-      this.router.navigate(['/']);
+      this.authService.registration(user).subscribe((isUserExist) => {
+        this.isUserExist = isUserExist;
+        if (isUserExist) {
+          this.emailOfExistUser = this.registrationDataForm.value.email;
+        } else {
+          this.router.navigate(['/']);
+        }
+      });
     } else {
       for (const prop in this.registrationDataForm.controls) {
         if (this.registrationDataForm.controls.hasOwnProperty(prop)) {
