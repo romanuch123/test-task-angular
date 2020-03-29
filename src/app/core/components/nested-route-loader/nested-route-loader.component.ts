@@ -1,8 +1,9 @@
 import { Component, OnInit, DoCheck } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
 import { IUser } from '../../interfaces/user';
 import { AuthService } from '../../services/auth.service';
+import { fromEvent } from 'rxjs';
 
 @Component({
   selector: 'app-nested-route-loader',
@@ -20,7 +21,7 @@ export class NestedRouteLoaderComponent implements OnInit, DoCheck {
     private router: Router,
     private userService: UserService,
     public authService: AuthService,
-  ) { }
+  ) {  }
   ngOnInit(): void {
   }
   ngDoCheck(): void {
@@ -31,7 +32,6 @@ export class NestedRouteLoaderComponent implements OnInit, DoCheck {
   openNav() {
     this.open = !this.open;
   }
-
   logout() {
     this.authService.logout();
     this.router.navigate(['/']);

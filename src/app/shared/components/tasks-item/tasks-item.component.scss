@@ -1,6 +1,7 @@
 .task-item {
   display: flex;
   justify-content: space-between;
+  position: relative;
   align-items: center;
   padding: 10px 20px;
   margin: 10px 20px;
@@ -19,5 +20,35 @@
     button {
       background: transparent;
     }
+  }
+  &__shared-box {
+    position: absolute;
+    top: 110%;
+    right: 0;
+    z-index: 10;
+    width: 200px;
+    padding: 10px 20px;
+    border: 1px solid grey;
+    border-radius: 7px;
+    background: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  }
+}
+.shared-box {
+  text-align: center;
+  &__close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: transparent;
+    padding: 3px;
+  }
+  &__content {
+    max-height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
+
   }
 }

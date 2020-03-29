@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ITask } from 'src/app/core/interfaces/task';
 import { TaskService } from 'src/app/core/services/task.service';
+import { UserService } from 'src/app/core/services/user.service';
+import { IUser } from 'src/app/core/interfaces/user';
 
 @Component({
   selector: 'app-tasks-item',
@@ -13,14 +15,21 @@ export class TasksItemComponent implements OnInit {
   @Output() onDeleteTask = new EventEmitter<string>();
 
   isEdit: boolean = false;
+  isSharedOpen: boolean = false;
   newTaskTitle: string = '';
+  users: IUser[] = [];
+  user: IUser;
 
   constructor(
     private taskService: TaskService,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
     this.newTaskTitle = this.tasksItem.title;
+    this.userService.getAllUsers().subscribe((data) => {
+      this.users = data;
+    });
   }
 
   updateTask(): void {
