@@ -18,6 +18,8 @@ export class LoginComponent implements OnInit {
   registrationDataForm: FormGroup;
   isUserExist: boolean = false;
   emailOfExistUser: string = '';
+  isAuthSuccess: boolean = true;
+
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -43,8 +45,14 @@ export class LoginComponent implements OnInit {
   login(): void {
     if (this.loginDataForm.valid) {
       const { email, password } = this.loginDataForm.value;
-      this.authService.login(email, password);
-      this.router.navigate(['/']);
+      this.authService.login(email, password).subscribe((data) => {
+        if (data) {
+          this.isAuthSuccess = true;
+          this.router.navigate(['/']);
+        } else {
+          this.isAuthSuccess = false;
+        }
+      });
     } else {
       for (const prop in this.loginDataForm.controls) {
         if (this.loginDataForm.controls.hasOwnProperty(prop)) {

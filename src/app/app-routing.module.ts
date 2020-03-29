@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NestedRouteLoaderComponent } from './core/components/nested-route-loader/nested-route-loader.component';
-import { LifeCycleHooksComponent } from './life-cycle-hooks/life-cycle-hooks.component';
 import { UserDashboardComponent } from './modules/user/pages/user-dashboard/user-dashboard.component';
 import { LoginComponent } from './modules/user/pages/login/login.component';
 import { TasksComponent } from './modules/user/pages/tasks/tasks.component';
 import { CompletedTasksComponent } from './modules/user/pages/completed-tasks/completed-tasks.component';
+import { NotFoundComponent } from './core/components/not-found/not-found.component';
+import { AuthGuardService } from './core/guards/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -18,21 +19,28 @@ const routes: Routes = [
       },
       {
         path: 'tasks',
+        canActivate: [AuthGuardService],
         component: TasksComponent,
       },
       {
         path: 'completed-tasks',
+        canActivate: [AuthGuardService],
         component: CompletedTasksComponent,
       },
       {
-        path: 'life-cycle-hooks',
-        component: LifeCycleHooksComponent,
-      },
-      {
         path: 'login',
+        canActivate: [AuthGuardService],
         component: LoginComponent,
       },
     ],
+  },
+  {
+    path: 'not-found',
+    component: NotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/not-found'
   },
 ];
 

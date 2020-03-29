@@ -1,4 +1,8 @@
 <div class="task-wrapper">
   <h1>Completed tasks</h1>
-    <app-tasks-list [tasksList]="filtredTaskList" (onUpdateTask)="updateTask($event)"></app-tasks-list>
+  <app-tasks-list
+    [tasksList]="filtredTaskList"
+    (onUpdateTask)="updateTask($event)"
+    (onDeleteTask)="deleteTask($event)"
+  ></app-tasks-list>
 </div>

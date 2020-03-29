@@ -29,12 +29,6 @@ export class DashboardMenuComponent implements OnInit {
       icon: '',
       path: 'completed-tasks',
     },
-    {
-      id: '4',
-      name: 'Life Cycle Hooks',
-      icon: 'fas fa-users-class',
-      path: 'life-cycle-hooks',
-    },
   ];
 
   constructor(

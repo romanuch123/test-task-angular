@@ -10,11 +10,10 @@ import { TaskService } from 'src/app/core/services/task.service';
 export class TasksItemComponent implements OnInit {
   @Input() tasksItem: ITask;
   @Output() onUpdateTask = new EventEmitter<ITask>();
-  @Output() onMakeTaskCompleted = new EventEmitter<ITask>();
+  @Output() onDeleteTask = new EventEmitter<string>();
 
   isEdit: boolean = false;
   newTaskTitle: string = '';
-  isComplete: boolean = false;
 
   constructor(
     private taskService: TaskService,
@@ -23,12 +22,11 @@ export class TasksItemComponent implements OnInit {
   ngOnInit(): void {
     this.newTaskTitle = this.tasksItem.title;
   }
+
   updateTask(): void {
-    console.log(this.isComplete);
     this.newTaskTitle = this.newTaskTitle.trim();
     const newTask: ITask = {
       ...this.tasksItem,
-      isComplete: this.isComplete,
       title: this.newTaskTitle,
     };
     this.taskService.updateTask(newTask).subscribe(() => {
@@ -36,12 +34,21 @@ export class TasksItemComponent implements OnInit {
     this.onUpdateTask.emit(newTask);
     this.isEdit = false;
   }
-  deleteTask(taskId: string): void {
-    this.taskService.deleteTask(taskId).subscribe(() => {
-
+  changeTaskCompleteStatus(): void {
+    this.newTaskTitle = this.newTaskTitle.trim();
+    const newTask: ITask = {
+      ...this.tasksItem,
+      isComplete: !this.tasksItem.isComplete,
+    };
+    this.taskService.updateTask(newTask).subscribe(() => {
     });
+    this.onUpdateTask.emit(newTask);
   }
-  closeEditing() {
+
+  deleteTask(taskId: string): void {
+    this.onDeleteTask.emit(taskId);
+  }
+  closeEditing(): void {
     this.isEdit = false;
     this.newTaskTitle = this.tasksItem.title;
   }

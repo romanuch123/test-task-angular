@@ -6,6 +6,10 @@
   </div>
   <div class="task-list-wrapper">
     <h2>Task list</h2>
-    <app-tasks-list [tasksList]="filtredTaskList" (onUpdateTask)="updateTask($event)"></app-tasks-list>
+    <app-tasks-list
+      [tasksList]="filtredTaskList"
+      (onUpdateTask)="updateTask($event)"
+      (onDeleteTask)="deleteTask($event)"
+    ></app-tasks-list>
   </div>
 </div>

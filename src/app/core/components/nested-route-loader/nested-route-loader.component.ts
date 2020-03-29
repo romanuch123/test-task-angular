@@ -19,23 +19,14 @@ export class NestedRouteLoaderComponent implements OnInit, DoCheck {
   constructor(
     private router: Router,
     private userService: UserService,
-    private authService: AuthService,
+    public authService: AuthService,
   ) { }
-  ngOnInit() {
-
-    // this.renderer.addClass(document.body, this.currentPage + '-dashboard');
+  ngOnInit(): void {
   }
   ngDoCheck(): void {
-    // console.log('DoCheck');
-    // this.userService.getUser().subscribe((data) => {
-    //   this.user = data;
-    // });
-  }
-  isUserAuthorized(): IUser {
     this.userService.getUser().subscribe((data) => {
       this.user = data;
     });
-    return this.user;
   }
   openNav() {
     this.open = !this.open;

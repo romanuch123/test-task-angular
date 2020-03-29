@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ITask } from 'src/app/core/interfaces/task';
 import { TaskService } from 'src/app/core/services/task.service';
 
@@ -7,21 +7,19 @@ import { TaskService } from 'src/app/core/services/task.service';
   templateUrl: './tasks.component.html',
   styleUrls: ['./tasks.component.scss']
 })
-export class TasksComponent implements OnInit, DoCheck {
+export class TasksComponent implements OnInit {
   newTaskTitle: string = '';
   tasksList: ITask[] = [];
+  // tasksList$;
 
   constructor(
-    private taskService: TaskService,
+    public taskService: TaskService,
   ) { }
 
   ngOnInit(): void {
     this.taskService.getUserTasks().subscribe((data) => {
       this.tasksList = data;
     });
-  }
-  ngDoCheck(): void {
-
   }
 
   get filtredTaskList(): ITask[] {
@@ -51,6 +49,11 @@ export class TasksComponent implements OnInit, DoCheck {
         el.title = task.title;
         el.isComplete = task.isComplete;
       }
+    });
+  }
+  deleteTask(taskId: string): void {
+    this.taskService.deleteTask(taskId).subscribe(() => {
+      this.tasksList = this.tasksList.filter(el => el.id !== taskId);
     });
   }
 }

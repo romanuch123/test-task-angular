@@ -1,4 +1,9 @@
 <p *ngIf="!tasksList.length" class="empty">Task list is empty...</p>
 <ul *ngIf="tasksList.length" class="tasks-list">
-  <app-tasks-item *ngFor="let tasksItem of tasksList" [tasksItem]="tasksItem" (onUpdateTask)="updateTask($event)"></app-tasks-item>
+  <app-tasks-item
+    *ngFor="let tasksItem of tasksList"
+    [tasksItem]="tasksItem"
+    (onUpdateTask)="updateTask($event)"
+    (onDeleteTask)="deleteTask($event)"
+  ></app-tasks-item>
 </ul>
