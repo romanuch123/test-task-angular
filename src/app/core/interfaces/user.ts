@@ -5,5 +5,6 @@ export interface IUser {
   lastName: string;
   email: string;
   password: string;
-  tasks: ITask[];
+  completedTasks: ITask[];
+  uncompletedTasks: ITask[];
 }

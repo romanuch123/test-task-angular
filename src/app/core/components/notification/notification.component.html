@@ -1,0 +1,13 @@
+<div class="notification-zone">
+  <div
+    *ngFor="let notification of notifications; let i = index"
+    class="single-notification {{notification.status}}"
+  >
+    <i class="icon material-icons">grade</i>
+    <div class="message">
+      <span class="title"> {{ notification.title }}</span>
+      <p>{{notification.message}}</p>
+    </div>
+    <div class="close-icon" (click)="deleteNotification(i)"><i class="material-icons">close</i></div>
+  </div>
+</div> 

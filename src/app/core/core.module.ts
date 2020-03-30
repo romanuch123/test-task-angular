@@ -8,6 +8,7 @@ import { AuthGuardService } from './guards/auth-guard.service';
 import { NestedRouteLoaderComponent } from './components/nested-route-loader/nested-route-loader.component';
 import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   imports: [
@@ -21,9 +22,11 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   declarations: [
     NestedRouteLoaderComponent,
     DashboardMenuComponent,
+    NotificationComponent,
     NotFoundComponent,
   ],
   exports: [
+    NotificationComponent,
   ],
 })
 export class CoreModule { }

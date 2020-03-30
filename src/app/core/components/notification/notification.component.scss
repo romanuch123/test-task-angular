@@ -1,0 +1,94 @@
+.notification-zone {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  min-width: 200px;
+  z-index: 10000 !important;
+
+  .single-notification {
+    margin-bottom: 7px;
+    position: relative;
+    padding: 7px 15px 7px 15px;
+    box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    border-radius: 7px;
+    background: #aaa;
+    color: #ffffff;
+    opacity: 1;
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &.success {
+      background: #7db4a3;
+    }
+
+    &.info {
+      background: #566a82;
+    }
+
+    &.error {
+      background: #e6375c;
+    }
+
+    p {
+      padding: 0 0 3px;
+      margin: 0;
+
+      .badge {
+        padding: 2px 6px;
+        letter-spacing: 0;
+        margin: 0 3px;
+        background: rgba(0, 0, 0, 0.3);
+        font-style: normal;
+        font-weight: 300;
+      }
+    }
+
+    .title {
+      padding: 2px 20px 5px 0;
+      display: block;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 300;
+
+      i,
+      svg {
+        margin-right: 5px;
+        font-size: 16px;
+      }
+
+      &:last-child {
+        padding: 0;
+      }
+    }
+
+    .icon {
+      position: absolute;
+      display: inline-block;
+      left: 11px;
+      top: 9px;
+      padding: 0;
+      font-size: 24px;
+    }
+
+    .message {
+      padding: 0;
+      margin-left: 30px;
+
+      p {
+        font-size: 13px;
+        font-style: normal;
+        font-weight: 200;
+      }
+    }
+
+    .close-icon {
+      z-index: 100;
+      position: absolute;
+      top: 8px;
+      right: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
+}

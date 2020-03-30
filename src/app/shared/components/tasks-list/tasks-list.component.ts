@@ -9,6 +9,7 @@ import { ITask } from 'src/app/core/interfaces/task';
 export class TasksListComponent implements OnInit {
   @Input() tasksList: ITask[] = [];
   @Output() onUpdateTask = new EventEmitter<ITask>();
+  @Output() onChangeTaskStatus = new EventEmitter<ITask>();
   @Output() onDeleteTask = new EventEmitter<string>();
 
   constructor() { }
@@ -18,6 +19,9 @@ export class TasksListComponent implements OnInit {
 
   updateTask(task: ITask) {
     this.onUpdateTask.emit(task);
+  }
+  changeTaskStatus(task: ITask): void {
+    this.onChangeTaskStatus.emit(task);
   }
   deleteTask(taskId: string): void {
     this.onDeleteTask.emit(taskId);

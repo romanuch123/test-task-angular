@@ -4,6 +4,7 @@
     "codelyzer"
   ],
   "rules": {
+    "align": [true, "parameters"],
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,

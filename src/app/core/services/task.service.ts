@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { ITask } from '../interfaces/task';
-import { switchMap, flatMap } from 'rxjs/operators';
+import { switchMap } from 'rxjs/operators';
 import { IUser } from '../interfaces/user';
 import { UserService } from './user.service';
 
@@ -17,7 +17,7 @@ export class TaskService {
   addNewTask(task: ITask): Observable<ITask> {
     return this.userService.getUser().pipe(
       switchMap((user) => {
-        user.tasks.unshift(task);
+        user.uncompletedTasks.unshift(task);
         return of(user);
       }),
       switchMap((user) => {
@@ -30,10 +30,17 @@ export class TaskService {
       })
     );
   }
-  getUserTasks(): Observable<ITask[]> {
+  getUserCompletedTasks(): Observable<ITask[]> {
     return this.userService.getUser().pipe(
       switchMap((user) => {
-        return of(user.tasks);
+        return of(user.completedTasks);
+      }),
+    );
+  }
+  getUserUncompletedTasks(): Observable<ITask[]> {
+    return this.userService.getUser().pipe(
+      switchMap((user) => {
+        return of(user.uncompletedTasks);
       }),
     );
   }
@@ -44,7 +51,7 @@ export class TaskService {
   updateTask(task: ITask): Observable<ITask> {
     return this.userService.getUser().pipe(
       switchMap((user) => {
-        user.tasks = user.tasks.map((el) => {
+        user.uncompletedTasks = user.uncompletedTasks.map((el) => {
           if (el.id === task.id) {
             return { ...el, ...task };
           }
@@ -62,10 +69,45 @@ export class TaskService {
       })
     );
   }
+  makeTaskCompleted(task: ITask): Observable<ITask> {
+    return this.userService.getUser().pipe(
+      switchMap((user) => {
+        user.uncompletedTasks = user.uncompletedTasks.filter(el => el.id !== task.id);
+        user.completedTasks.unshift(task);
+        return of(user);
+      }),
+      switchMap((user) => {
+        this.userService.updateUser(user);
+        return of(user);
+      }),
+      switchMap((user) => {
+        this.userService.updateAllUsers(user);
+        return of(task);
+      })
+    );
+  }
+  makeTaskUncompleted(task: ITask): Observable<ITask> {
+    return this.userService.getUser().pipe(
+      switchMap((user) => {
+        user.completedTasks = user.completedTasks.filter(el => el.id !== task.id);
+        user.uncompletedTasks.unshift(task);
+        return of(user);
+      }),
+      switchMap((user) => {
+        this.userService.updateUser(user);
+        return of(user);
+      }),
+      switchMap((user) => {
+        this.userService.updateAllUsers(user);
+        return of(task);
+      })
+    );
+  }
   deleteTask(taskId: string): Observable<boolean> {
     return this.userService.getUser().pipe(
       switchMap((user) => {
-        user.tasks = user.tasks.filter(el => el.id !== taskId);
+        user.uncompletedTasks = user.uncompletedTasks.filter(el => el.id !== taskId);
+        user.completedTasks = user.completedTasks.filter(el => el.id !== taskId);
         return of(user);
       }),
       switchMap((user) => {
@@ -80,7 +122,7 @@ export class TaskService {
   }
   shareTask(task: ITask, user: IUser): Observable<string> {
     const userRecipient = user;
-    userRecipient.tasks.unshift(task);
+    userRecipient.uncompletedTasks.unshift(task);
     this.userService.updateAllUsers(userRecipient);
     return of(user.email);
   }

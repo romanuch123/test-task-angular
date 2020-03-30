@@ -70,7 +70,8 @@ export class LoginComponent implements OnInit {
         lastName: this.registrationDataForm.value.lastName,
         email: this.registrationDataForm.value.email,
         password: this.registrationDataForm.value.password,
-        tasks: [],
+        completedTasks: [],
+        uncompletedTasks: [],
       };
       this.authService.registration(user).subscribe((isUserExist) => {
         this.isUserExist = isUserExist;

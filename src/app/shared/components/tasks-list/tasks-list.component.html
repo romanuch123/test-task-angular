@@ -4,6 +4,7 @@
     *ngFor="let tasksItem of tasksList"
     [tasksItem]="tasksItem"
     (onUpdateTask)="updateTask($event)"
+    (onChangeTaskStatus)="changeTaskStatus($event)"
     (onDeleteTask)="deleteTask($event)"
   ></app-tasks-item>
 </ul>

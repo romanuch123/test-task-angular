@@ -7,8 +7,9 @@
   <div class="task-list-wrapper">
     <h2>Task list</h2>
     <app-tasks-list
-      [tasksList]="filtredTaskList"
+      [tasksList]="tasksList"
       (onUpdateTask)="updateTask($event)"
+      (onChangeTaskStatus)="changeTaskStatus($event)"
       (onDeleteTask)="deleteTask($event)"
     ></app-tasks-list>
   </div>
