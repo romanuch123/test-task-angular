@@ -12,9 +12,6 @@ import { fromEvent } from 'rxjs';
 })
 export class NestedRouteLoaderComponent implements OnInit, DoCheck {
   open: boolean = false;
-  // currentPage = '';
-  // isLoaded = false;
-  // isLoading = true;
   user: IUser;
 
   constructor(
