@@ -8,7 +8,9 @@ import { IMenuItem } from '../../interfaces/menuItem';
   styleUrls: ['./dashboard-menu.component.scss']
 })
 export class DashboardMenuComponent implements OnInit {
-  @Output() hideMenu = new EventEmitter();
+  @Output() onHideMenu = new EventEmitter();
+
+  isMenuOpen: boolean = false;
 
   menuList: IMenuItem[] = [
     {
@@ -35,6 +37,14 @@ export class DashboardMenuComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+  }
+  hideMenu(): void {
+    if (this.isMenuOpen) {
+      this.onHideMenu.emit();
+      this.isMenuOpen = false;
+    } else {
+      this.isMenuOpen = true;
+    }
   }
 }

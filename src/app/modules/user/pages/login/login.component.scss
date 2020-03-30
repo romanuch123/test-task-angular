@@ -42,3 +42,10 @@ label {
 .exist-user-msg {
   color: red;
 }
+@media screen and (max-width: 900px) {
+  .login-form {
+    .form-row {
+      width: 90%;
+    }
+  }
+}

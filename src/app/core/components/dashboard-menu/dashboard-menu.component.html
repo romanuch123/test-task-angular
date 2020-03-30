@@ -1,6 +1,13 @@
+<div class="dashboard-menu__wrapper" appClickOutside (clickOutside)="hideMenu()">
+  <div class="dashboard-menu__wrapper__logo">
+    <span>LOGO</span>
+  </div>
+  <hr>
+
+</div>
 <nav>
   <ul class="dashboard-menu__list">
-    <li *ngFor="let menuItem of menuList" (click)="hideMenu.emit()" class="dashboard-menu__list__item">
+    <li *ngFor="let menuItem of menuList" (click)="hideMenu()" class="dashboard-menu__list__item">
       <a
         routerLink="/{{menuItem.path}}"
         routerLinkActive="active"

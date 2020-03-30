@@ -114,3 +114,9 @@ button {
 .text-center {
   text-align: center;
 }
+
+@media screen and (max-width: 900px) {
+  .form-field {
+    box-sizing: border-box;
+  }
+}

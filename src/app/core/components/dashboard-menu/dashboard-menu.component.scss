@@ -16,3 +16,27 @@
     }
   }
 }
+.dashboard-menu__wrapper {
+  &__logo {
+    display: none;
+  }
+  hr {
+    margin: 0;
+    border: none;
+    border-top: 1px solid green;;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .dashboard-menu__wrapper {
+    &__logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 63px;
+      span {
+        padding: 20px;
+      }
+    }
+  }
+}

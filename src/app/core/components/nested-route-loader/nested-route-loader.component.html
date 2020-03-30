@@ -1,8 +1,7 @@
 <div class="dashboard-header">
-  <!-- <div class="dashboard-menu-button" (click)="openNav()" [ngClass]="open ? 'dashboard-menu-open' : ''">
-    <i class="fas fa-bars"></i>
-    <i class="fas fa-times"></i>
-  </div> -->
+  <button class="dashboard-header__menu-btn" (click)="openNav()">
+    <i class="material-icons">menu</i>
+  </button>
   <div class="dashboard-header__logo logo">
     <a routerLink="/">
        LOGO
@@ -25,10 +24,9 @@
 
   </div>
 </div>
-
-<div class="dashboard" [ngClass]="open ? 'dashboard-menu-open' : ''">
+<div class="dashboard" [ngClass]="open ? 'menu-open' : ''">
   <div class="dashboard__menu">
-    <app-dashboard-menu (hideMenu)="open = false;"></app-dashboard-menu>
+    <app-dashboard-menu (onHideMenu)="open = false;"></app-dashboard-menu>
   </div>
   <div class="dashboard__content">
     <div class="content-data">
@@ -36,4 +34,6 @@
       </router-outlet>
     </div>
   </div>
+</div>
+<div *ngIf="open" class="menu-open-shadow">
 </div>

@@ -57,5 +57,9 @@
     flex-direction: column;
     align-items: center;
     overflow: auto;
+    button {
+      background: transparent;
+      margin: 5px 0;
+    }
   }
 }

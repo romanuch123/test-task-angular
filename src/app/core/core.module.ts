@@ -9,6 +9,7 @@ import { NestedRouteLoaderComponent } from './components/nested-route-loader/nes
 import { DashboardMenuComponent } from './components/dashboard-menu/dashboard-menu.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { NotificationComponent } from './components/notification/notification.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
@@ -16,6 +17,7 @@ import { NotificationComponent } from './components/notification/notification.co
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [
   ],
