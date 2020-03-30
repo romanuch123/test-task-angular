@@ -1283,7 +1283,7 @@ var TasksComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"user-dashboard\">\n  <div class=\"user-dashboard__img-wrapper\">\n    <img src=\"../../../../../assets/images/angular.png\" alt=\"angular\">\n  </div>\n</div>\n"
+module.exports = "<div class=\"user-dashboard\">\n  <div class=\"user-dashboard__img-wrapper\">\n    <img src=\"./assets/images/angular.png\" alt=\"angular\">\n  </div>\n</div>\n"
 
 /***/ }),
 
