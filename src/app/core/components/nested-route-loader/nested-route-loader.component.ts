@@ -27,7 +27,7 @@ export class NestedRouteLoaderComponent implements OnInit, DoCheck {
     });
   }
   openNav() {
-    this.open = !this.open;
+    this.open = true;
   }
   logout() {
     this.authService.logout();
